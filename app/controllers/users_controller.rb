@@ -41,6 +41,12 @@ class UsersController < ApplicationController
       render 'edit'
     end
   end
+  
+   def destroy
+      User.find(params[:id]).destroy
+      flash[:success] = "User deleted"
+      redirect_to users_url
+    end
 
   private
     def user_params
@@ -61,11 +67,7 @@ class UsersController < ApplicationController
       redirect_to(root_url) unless current_user?(@user)
     end
 
-    def destroy
-      User.find(params[:id]).destroy
-      flash[:success] = "User deleted"
-      redirect_to users_url
-    end
+   
     # Confirms an admin user.
     def admin_user
       redirect_to(root_url) unless current_user.admin?
