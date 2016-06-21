@@ -19,9 +19,9 @@ class UsersController < ApplicationController
      @user = User.new(user_params)    # Not the final implementation!
     if @user.save
       # Handle a successful save.
-      log_in @user_params
+      #log_in @user_params
       flash[:success] = "Welcome to the Sample App!"
-      redirect_to @user
+      redirect_to root_url
     else
       render 'new'
     end
@@ -41,7 +41,7 @@ class UsersController < ApplicationController
       render 'edit'
     end
   end
-  
+
    def destroy
       User.find(params[:id]).destroy
       flash[:success] = "User deleted"
