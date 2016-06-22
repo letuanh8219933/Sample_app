@@ -19,6 +19,7 @@
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
   resources :users
+  resources :account_activations, only: [:edit]
 end
 
   # The priority is based upon order of creation: first created -> highest priority.
